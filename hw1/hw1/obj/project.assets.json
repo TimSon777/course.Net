@@ -1,0 +1,119 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0": {
+      "Codecov/1.13.0": {
+        "type": "package"
+      }
+    }
+  },
+  "libraries": {
+    "Codecov/1.13.0": {
+      "sha512": "LN8hz6JXWfXbi28BnUp+PfKYyvPsRzJR01yOxNLB/M7g+jRTSgyUVMGPS2fGj9bPb1B22l86dEdCKTutrectnA==",
+      "type": "package",
+      "path": "codecov/1.13.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "codecov.1.13.0.nupkg.sha512",
+        "codecov.nuspec",
+        "tools/codecov.exe",
+        "tools/codecov.pdb",
+        "tools/linux-x64/codecov",
+        "tools/linux-x64/codecov.pdb",
+        "tools/linux-x64/codecov.xml",
+        "tools/osx-x64/codecov",
+        "tools/osx-x64/codecov.pdb",
+        "tools/osx-x64/codecov.xml",
+        "tools/osx-x64/libSystem.IO.Compression.Native.dylib",
+        "tools/osx-x64/libSystem.Native.dylib",
+        "tools/osx-x64/libSystem.Net.Security.Native.dylib",
+        "tools/osx-x64/libSystem.Security.Cryptography.Native.Apple.dylib",
+        "tools/osx-x64/libSystem.Security.Cryptography.Native.OpenSsl.dylib",
+        "tools/osx-x64/libclrjit.dylib",
+        "tools/osx-x64/libcoreclr.dylib",
+        "tools/win7-x86/clrcompression.dll",
+        "tools/win7-x86/clrjit.dll",
+        "tools/win7-x86/codecov.exe",
+        "tools/win7-x86/codecov.pdb",
+        "tools/win7-x86/codecov.xml",
+        "tools/win7-x86/coreclr.dll",
+        "tools/win7-x86/mscordaccore.dll"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0": [
+      "Codecov >= 1.13.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Тимур\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Тимур\\Desktop\\course.Net\\hw1\\hw1\\hw1.csproj",
+      "projectName": "hw1",
+      "projectPath": "C:\\Users\\Тимур\\Desktop\\course.Net\\hw1\\hw1\\hw1.csproj",
+      "packagesPath": "C:\\Users\\Тимур\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Тимур\\Desktop\\course.Net\\hw1\\hw1\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Тимур\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0": {
+        "targetAlias": "net5.0",
+        "dependencies": {
+          "Codecov": {
+            "target": "Package",
+            "version": "[1.13.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

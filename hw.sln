@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hw1", "hw1\hw1.csproj", "{4CC1B02A-7242-4F8F-85A1-B8309C9A2F5F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hw1", "hw1\hw1\hw1.csproj", "{4CC1B02A-7242-4F8F-85A1-B8309C9A2F5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{963FFCA7-48FA-4BBA-A875-2B360926C7B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests1", "hw1\Tests1\Tests1.csproj", "{963FFCA7-48FA-4BBA-A875-2B360926C7B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
