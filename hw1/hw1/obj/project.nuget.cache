@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ucd/i5c5jMEfUZkToEzEXzL/5t2Bk3nxXkBuk8e5v15tEoKUKbhmutJKpYPCnClvoJ/LBOpLu+I9lFJ92ME6wQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Тимур\\Desktop\\course.Net\\hw1\\hw1\\hw1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Тимур\\.nuget\\packages\\codecov\\1.13.0\\codecov.1.13.0.nupkg.sha512"
+  ],
+  "logs": []
+}
