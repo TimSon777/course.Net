@@ -2,9 +2,9 @@
 {
     public enum CalculatorOperation : byte
     {
-        Plus,
-        Minus,
-        Multiply,
-        Divide
+        Plus = 1,
+        Minus = 2,
+        Multiply = 3,
+        Divide = 4
     }
 }

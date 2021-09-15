@@ -27,13 +27,16 @@ namespace hw1
         {
             operation = arg switch
             {
+                "+" => CalculatorOperation.Plus,
                 "-" => CalculatorOperation.Minus,
                 "*" => CalculatorOperation.Multiply,
                 "/" => CalculatorOperation.Divide,
-                _ => CalculatorOperation.Plus
+                _ => 0
             };
 
-            return operation != CalculatorOperation.Plus || arg == "+";
+            if (operation != 0) return true;
+            Console.WriteLine($"Value is not operation: {arg}");
+            return false;
         }
 
         private static bool TryParseIntOrQuit(string arg, out int val)
