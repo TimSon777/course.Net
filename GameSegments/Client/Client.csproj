@@ -4,11 +4,11 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{928B0A7B-011F-4EFE-97A3-884B8EF9B1BF}</ProjectGuid>
+        <ProjectGuid>{AB25765E-8B64-48B4-B1BD-60B0A0621047}</ProjectGuid>
         <OutputType>Exe</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>Protocol</RootNamespace>
-        <AssemblyName>Protocol</AssemblyName>
+        <RootNamespace>Client</RootNamespace>
+        <AssemblyName>Client</AssemblyName>
         <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
@@ -38,16 +38,15 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="ArrayExtensions.cs" />
-        <Compile Include="FieldAttribute.cs" />
-        <Compile Include="ObjectExtensions.cs" />
-        <Compile Include="Packet.cs" />
-        <Compile Include="PacketConverter.cs" />
-        <Compile Include="PacketField.cs" />
-        <Compile Include="PacketType.cs" />
-        <Compile Include="PacketTypeManager.cs" />
+        <Compile Include="Client.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Protocol\Protocol.csproj">
+        <Project>{928b0a7b-011f-4efe-97a3-884b8ef9b1bf}</Project>
+        <Name>Protocol</Name>
+      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

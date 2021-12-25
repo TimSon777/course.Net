@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace Protocol
 {
@@ -94,6 +96,60 @@ namespace Protocol
  
                 fields = fields.Skip(2 + size).ToArray();
             }
+        }
+
+        public PacketField FindField(byte id) => Fields.FirstOrDefault(field => field.Id == id);
+        
+        public bool HasField(byte id) => FindField(id) != null;
+        
+        public T GetValue<T>(byte id) where T : struct
+        {
+            var field = FindField(id);
+ 
+            if (field == null)
+            {
+                throw new Exception($"Field with ID {id} wasn't found.");
+            }
+            
+            var neededSize = Marshal.SizeOf(typeof(T));
+ 
+            if (field.Size != neededSize)
+            {
+                throw new Exception(
+                    $"Can't convert field to type {typeof(T).FullName}.\n" + $"We have {field.Size} bytes but we need exactly {neededSize}.");
+            }
+ 
+            return field.Contents.ByteArrayToFixedObject<T>();
+        }
+        
+        public void SetValue(byte id, object structure)
+        {
+            if (!structure.GetType().IsValueType)
+            {
+                throw new Exception("Only value types are available.");
+            }
+ 
+            var field = FindField(id);
+ 
+            if (field == null)
+            {
+                field = new PacketField
+                {
+                    Id = id
+                };
+ 
+                Fields.Add(field);
+            }
+ 
+            var bytes = structure.FixedObjectToByteArray();
+ 
+            if (bytes.Length > byte.MaxValue)
+            {
+                throw new Exception("Object is too big. Max length is 255 bytes.");
+            }
+ 
+            field.Size = (byte) bytes.Length;
+            field.Contents = bytes;
         }
     }
 }
