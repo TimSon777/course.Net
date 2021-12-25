@@ -1,8 +1,14 @@
-﻿namespace GameSegments
+﻿using XProtocol.Serializator;
+
+namespace GameSegments
 {
-    public static class GameSettings
+    public class GameSettings
     {
-        public static int MaxPointsCount = 20;
-        public static int MinPointsCount = 8;
+        public int PointsCount { get; set; }
+
+        public GameSettings(int pointsCount)
+        {
+            PointsCount = pointsCount;
+        }
     }
 }

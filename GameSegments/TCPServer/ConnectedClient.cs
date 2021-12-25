@@ -56,11 +56,23 @@ namespace TCPServer
                     break;
                 case XPacketType.Unknown:
                     break;
+                case XPacketType.CreateLobby:
+                    CreateLobby(packet);
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
+        
+        private void CreateLobby(XPacket packet)
+        {
+            Console.WriteLine("Recieved handshake packet.");
+            var handshake = XPacketConverter.Deserialize<TcpClient>(packet);
+            Console.WriteLine("Answering..");
+            QueuePacketSend(XPacketConverter.Serialize(XPacketType.Handshake, handshake).ToPacket());
+        }
+        
         private void ProcessHandshake(XPacket packet)
         {
             Console.WriteLine("Recieved handshake packet.");

@@ -33,6 +33,10 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+          <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Xml.Linq" />
@@ -77,6 +81,7 @@
         <EmbeddedResource Include="Settings.resx">
           <DependentUpon>Settings.cs</DependentUpon>
         </EmbeddedResource>
+        <None Include="packages.config" />
         <None Include="Properties\Settings.settings">
             <Generator>SettingsSingleFileGenerator</Generator>
             <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -89,6 +94,20 @@
     </ItemGroup>
     <ItemGroup>
         <None Include="App.config" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\TCPClient\TCPClient.csproj">
+        <Project>{a76bfe5a-c711-4b27-bd8b-2aa917401e3c}</Project>
+        <Name>TCPClient</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\TCPServer\TCPServer.csproj">
+        <Project>{09c85e39-53ef-466a-ab8b-df23ebf3065b}</Project>
+        <Name>TCPServer</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\XProtocol\XProtocol.csproj">
+        <Project>{b510589e-929e-47fc-9908-01f631ffb574}</Project>
+        <Name>XProtocol</Name>
+      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

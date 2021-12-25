@@ -5,18 +5,30 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using TCPClient;
+using XProtocol;
+using XProtocol.Serializator;
 
 namespace GameSegments
 {
     public partial class Form1 : Form
     {
+        private GameSettings settings;
+        private readonly XClient client;
+        private static int size; 
         public Form1()
         {
+            settings = new GameSettings(8);
             InitializeComponent();
             button2.Hide();
+            client = new XClient();
+           // client.OnPacketRecieve += OnPacketRecieve;
+            client.Connect("[::1]", 4910);
         }
 
         private static IEnumerable<Point> GenerateRandomPoints(int count, float maxXValue, float maxYValue)
@@ -39,10 +51,11 @@ namespace GameSegments
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var pointsCount = new Random().Next(GameSettings.MinPointsCount, GameSettings.MaxPointsCount);
+            var handshake = XPacketConverter.Serialize(XPacketType.CreateLobby,client).ToPacket();
+            client.QueuePacketSend(handshake);
             var graphics = pictureBox1.CreateGraphics();
             pictureBox1.Refresh();
-            var generatedPoints = GenerateRandomPoints(pointsCount, pictureBox1.Width,
+            var generatedPoints = GenerateRandomPoints(settings.PointsCount, pictureBox1.Width,
                 pictureBox1.Height);
             DrawPoints(generatedPoints,graphics,Color.Green, 5f);
             button1.Hide();
@@ -52,7 +65,7 @@ namespace GameSegments
         
         private void настройкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Settings().Show();
+            new Settings(settings).Show();
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -5,29 +5,27 @@ namespace GameSegments
 {
     public partial class Settings : Form
     {
-        public Settings()
+        private readonly GameSettings settings;
+        public Settings(GameSettings settings)
         {
+            this.settings = settings;
             InitializeComponent();
-            textBox1.Text = GameSettings.MaxPointsCount.ToString();
-            textBox2.Text = GameSettings.MinPointsCount.ToString();
+            textBox1.Text = settings.PointsCount.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(textBox1.Text, out var maxPoints) && int.TryParse(textBox2.Text, out var minPoints))
+            if (int.TryParse(textBox1.Text, out var points))
             {
-                if(minPoints < 8)
+                if(points < 8)
                     MessageBox.Show("точек должно быть минимум 8");
-                else if(minPoints > maxPoints)
-                    MessageBox.Show("минимальное количество точек не должно быть больше максимального");
                 else
                 {
-                    GameSettings.MaxPointsCount = maxPoints;
-                    GameSettings.MinPointsCount = minPoints;   
+                    settings.PointsCount = points;
                 }
             }
             else
-                MessageBox.Show("параметры должны быть числом");
+                MessageBox.Show("параметр должен быть числом");
         }
     }
 }

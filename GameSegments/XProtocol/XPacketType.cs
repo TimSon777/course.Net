@@ -3,6 +3,8 @@
     public enum XPacketType
     {
         Unknown,
-        Handshake
+        Handshake,
+        CreateLobby,
+        Lobby
     }
 }

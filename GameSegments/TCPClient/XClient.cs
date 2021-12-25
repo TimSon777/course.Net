@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TCPClient
 {
-    internal class XClient
+    public class XClient
     {
         public Action<byte[]> OnPacketRecieve { get; set; }
 

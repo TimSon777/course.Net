@@ -18,15 +18,7 @@ namespace XProtocol
 
         public XPacketField GetField(byte id)
         {
-            foreach (var field in Fields)
-            {
-                if (field.FieldID == id)
-                {
-                    return field;
-                }
-            }
-
-            return null;
+            return Fields.FirstOrDefault(field => field.FieldID == id);
         }
 
         public bool HasField(byte id)
@@ -37,7 +29,6 @@ namespace XProtocol
         private T ByteArrayToFixedObject<T>(byte[] bytes) where T: struct 
         {
             T structure;
-            
             var handle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
             
             try
