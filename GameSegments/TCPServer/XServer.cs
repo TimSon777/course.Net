@@ -12,11 +12,11 @@ namespace TCPServer
 
         private bool _listening;
         private bool _stopListening;
-        private readonly Dictionary<Guid, GameSession> gameSessions;
+        public static Dictionary<Guid, GameSession> GameSessions;
 
         public XServer()
         {
-            gameSessions = gameSessions = new Dictionary<Guid, GameSession>();
+            GameSessions = GameSessions = new Dictionary<Guid, GameSession>();
             var ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());  
             var ipAddress = ipHostInfo.AddressList[0];
             

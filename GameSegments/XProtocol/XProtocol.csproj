@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>XProtocol</RootNamespace>
     <AssemblyName>XProtocol</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,11 +47,23 @@
     <Compile Include="Serializator\XPacketConverter.cs" />
     <Compile Include="XPacket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XPacketCreateLobby.cs" />
     <Compile Include="XPacketField.cs" />
+    <Compile Include="XPacketLobbyCreated.cs" />
     <Compile Include="XPacketHandshake.cs" />
     <Compile Include="XPacketType.cs" />
     <Compile Include="XPacketTypeManager.cs" />
     <Compile Include="XProtocolEncryptor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TCPClient\TCPClient.csproj">
+      <Project>{a76bfe5a-c711-4b27-bd8b-2aa917401e3c}</Project>
+      <Name>TCPClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XClient\XClient.csproj">
+      <Project>{c4098405-2dc8-470a-aaa1-6a271dd7d89a}</Project>
+      <Name>XClient</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

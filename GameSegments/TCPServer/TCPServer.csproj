@@ -52,6 +52,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TCPClient\TCPClient.csproj">
+      <Project>{a76bfe5a-c711-4b27-bd8b-2aa917401e3c}</Project>
+      <Name>TCPClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XClient\XClient.csproj">
+      <Project>{c4098405-2dc8-470a-aaa1-6a271dd7d89a}</Project>
+      <Name>XClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XProtocol\XProtocol.csproj">
       <Project>{b510589e-929e-47fc-9908-01f631ffb574}</Project>
       <Name>XProtocol</Name>

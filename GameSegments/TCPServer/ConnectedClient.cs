@@ -18,7 +18,6 @@ namespace TCPServer
         public ConnectedClient(Socket client)
         {
             Client = client;
-
             Task.Run(ProcessIncomingPackets);
             Task.Run(SendPackets);
         }
@@ -67,10 +66,13 @@ namespace TCPServer
         
         private void CreateLobby(XPacket packet)
         {
-            Console.WriteLine("Recieved handshake packet.");
-            var handshake = XPacketConverter.Deserialize<TcpClient>(packet);
-            Console.WriteLine("Answering..");
-            QueuePacketSend(XPacketConverter.Serialize(XPacketType.Handshake, handshake).ToPacket());
+            var handshake = XPacketConverter.Deserialize<XPacketCreateLobby>(packet);
+            var guid = Guid.NewGuid();
+            var gameSession = new GameSession(guid, handshake.HostUser);
+            XServer.GameSessions.Add(guid,gameSession);
+            var lobby = new XPacketLobbyCreated { LobbyGuid = guid };
+            var answer = XPacketConverter.Serialize(XPacketType.LobbyCreated, lobby);
+            QueuePacketSend(XPacketConverter.Serialize(XPacketType.CreateLobby, answer).ToPacket());
         }
         
         private void ProcessHandshake(XPacket packet)

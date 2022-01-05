@@ -104,6 +104,10 @@
         <Project>{09c85e39-53ef-466a-ab8b-df23ebf3065b}</Project>
         <Name>TCPServer</Name>
       </ProjectReference>
+      <ProjectReference Include="..\XClient\XClient.csproj">
+        <Project>{c4098405-2dc8-470a-aaa1-6a271dd7d89a}</Project>
+        <Name>XClient</Name>
+      </ProjectReference>
       <ProjectReference Include="..\XProtocol\XProtocol.csproj">
         <Project>{b510589e-929e-47fc-9908-01f631ffb574}</Project>
         <Name>XProtocol</Name>

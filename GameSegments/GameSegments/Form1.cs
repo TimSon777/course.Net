@@ -1,16 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
-using TCPClient;
+using XClient;
 using XProtocol;
 using XProtocol.Serializator;
 
@@ -19,15 +11,15 @@ namespace GameSegments
     public partial class Form1 : Form
     {
         private GameSettings settings;
-        private readonly XClient client;
+        private readonly Client client;
         private static int size; 
         public Form1()
         {
             settings = new GameSettings(8);
             InitializeComponent();
             button2.Hide();
-            client = new XClient();
-           // client.OnPacketRecieve += OnPacketRecieve;
+            client = new Client();
+            client.OnPacketRecieve += OnPacketRecieve;
             client.Connect("[::1]", 4910);
         }
 
@@ -51,7 +43,8 @@ namespace GameSegments
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var handshake = XPacketConverter.Serialize(XPacketType.CreateLobby,client).ToPacket();
+            var packet = new XPacketCreateLobby {HostUser = client };
+            var handshake = XPacketConverter.Serialize(XPacketType.CreateLobby,packet).ToPacket();
             client.QueuePacketSend(handshake);
             var graphics = pictureBox1.CreateGraphics();
             pictureBox1.Refresh();
@@ -73,6 +66,37 @@ namespace GameSegments
             pictureBox1.Refresh();
             button1.Show();
             button2.Hide();
+        }
+        
+        private static void OnPacketRecieve(byte[] packet)
+        {
+            var parsed = XPacket.Parse(packet);
+
+            if (parsed != null)
+            {
+                ProcessIncomingPacket(parsed);
+            }
+        }
+
+        private static void ProcessIncomingPacket(XPacket packet)
+        {
+            var type = XPacketTypeManager.GetTypeFromPacket(packet);
+
+            switch (type)
+            {
+                case XPacketType.LobbyCreated:
+                    ProcessCreatedLobby(packet);
+                    break;
+                case XPacketType.Unknown:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private static void ProcessCreatedLobby(XPacket packet)
+        {
+            var handshake = XPacketConverter.Deserialize<XPacketLobbyCreated>(packet);
         }
     }
 }

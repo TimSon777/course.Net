@@ -1,18 +1,17 @@
 ﻿using System;
-using System.Net.Sockets;
+using XClient;
 
 namespace TCPServer
 {
     public class GameSession
     {
         public readonly Guid Guid;
-        public readonly TcpClient HostUser;
-        public TcpClient ConnectedUser { get; set; }
-        public GameSession(Guid guid, TcpClient hostUser, TcpClient connectedUser)
+        public readonly Client HostUser;
+        public Client ConnectedUser { get; set; }
+        public GameSession(Guid guid, Client hostUser)
         {
             Guid = guid;
             HostUser = hostUser;
-            ConnectedUser = connectedUser;
         }
     }
 }

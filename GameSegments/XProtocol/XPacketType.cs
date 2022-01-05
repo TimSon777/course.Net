@@ -5,6 +5,6 @@
         Unknown,
         Handshake,
         CreateLobby,
-        Lobby
+        LobbyCreated
     }
 }
